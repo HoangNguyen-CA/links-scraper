@@ -1,0 +1,21 @@
+org: hoangnguyenca
+app: serverless-starter
+service: web-scraper
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  httpApi:
+    cors: true
+
+functions:
+  scraper:
+    handler: handler.scraper
+    events:
+      - httpApi:
+          path: /
+          method: post
+
+plugins:
+  - serverless-offline
